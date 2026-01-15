@@ -1,37 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ConfManager - Plateforme de Gestion de Conférences
 
-## Getting Started
+![ConfManager Logo](/docs/images/logo.png)
 
-First, run the development server:
+## 📌 Présentation
 
+**ConfManager** est une application web complète permettant l'organisation et la gestion de conférences scientifiques et académiques. Le projet a été réalisé par l'**Équipe 7** dans le cadre du module "Logiciels et Systèmes Intelligents" à la FST de Tanger (Université Abdelmalek Essaâdi).
+
+L'objectif principal est de fournir une interface intuitive pour :
+*   Les **organisateurs** : Création d'événements, gestion des plannings, suivi des inscriptions.
+*   Les **participants** : Inscription aux conférences, consultation du programme, gestion de leurs billets.
+
+---
+
+## 👥 L'Équipe (Team 7)
+
+| Membre | Rôle | Responsabilités |
+|:---|:---|:---|
+| **Uthman Junaid** | Chef de Projet | Coordination, Scrum Master, Gestion des Risques, Outil Agile |
+| **Ahmane Yahya** | Analyste | Cahier des charges, WBS, Cas d'utilisation |
+| **Essalhi Salma** | Analyste | Analyse des besoins, Maquettage, Diagrammes |
+| **Kamouss Yassine** | Dev Back-End | API, Base de données, Logique d'inscription |
+| **El Gorrim Mohamed** | Dev Back-End | Authentification (NextAuth), Services métier |
+| **Salhi Mohamed** | Dev Front-End | UI/UX, Intégration React/Tailwind, Dashboard |
+| **Kchibal Ismail** | Testeur | Tests Unitaires (Jest), Tests d'Intégration |
+| **Mohand Omar Moussa** | Qualité / Doc | Revue de code, Documentation Technique (Report) |
+
+---
+
+## 🛠️ Stack Technique
+
+*   **Framework** : [Next.js 14](https://nextjs.org/) (App Router)
+*   **Langage** : TypeScript
+*   **Base de données** : SQLite (Dev) / PostgreSQL (Prod) via [Prisma ORM](https://www.prisma.io/)
+*   **Authentification** : [NextAuth.js](https://next-auth.js.org/)
+*   **Styling** : [Tailwind CSS](https://tailwindcss.com/)
+*   **Tests** : Jest & React Testing Library
+*   **Animation** : Framer Motion
+
+---
+
+## 🚀 Fonctionnalités Clés
+
+### 1. Gestion des Événements
+*    CRUD complet des conférences.
+*    Système de dates, lieux et descriptions détaillées.
+
+### 2. Gestion des Inscriptions
+*    Flux d'inscription utilisateur sécurisé.
+*    Tableau de bord personnalisé pour suivre ses inscriptions.
+
+### 3. Outil de Gestion Agile (Interne)
+*    Un module **Kanban Board** intégré directement au Back-Office.
+*    Permet de visualiser l'avancement du projet (To Do, In Progress, Done).
+*    Accessible via le menu **"Suivi Projet (Agile)"**.
+
+---
+
+## 📦 Installation & Démarrage
+
+1.  **Cloner le dépôt**
+    ```bash
+    git clone https://github.com/MedGm/ConfManager.git
+    cd ConfManager
+    ```
+
+2.  **Installer les dépendances**
+    ```bash
+    npm install
+    ```
+
+3.  **Configurer la base de données**
+    ```bash
+    npx prisma migrate dev
+    npx ts-node prisma/seed.ts  # (Optionnel) Pour créer les utilisateurs Admin/Guest et les tâches Agile
+    ```
+
+4.  **Lancer le serveur de développement**
+    ```bash
+    npm run dev
+    ```
+
+Rendez-vous sur [http://localhost:3000](http://localhost:3000).
+
+---
+
+## 🧪 Tests
+
+Le projet inclut une suite de tests unitaires et d'intégration.
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📄 Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# ConfManager
+Le rapport complet du projet est disponible dans le dossier `docs/` au format LaTeX :
+*   `docs/REPORT.tex` : Rapport technique détaillé.
+*   `docs/AUDIT_REPORT.md` : Rapport d'audit interne.
+*   `docs/GANTT.md`, `docs/WBS.md` : Documents de planification.
