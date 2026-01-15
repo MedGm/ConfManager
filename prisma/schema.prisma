@@ -50,13 +50,16 @@ model Registration {
 }
 
 model Session {
-  id        Int      @id @default(autoincrement())
-  title     String
-  speaker   String?
-  startTime DateTime
-  endTime   DateTime
-  eventId   Int
-  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  id          Int      @id @default(autoincrement())
+  title       String
+  speaker     String?
+  startTime   DateTime
+  endTime     DateTime
+  description String?
+  location    String?
+  
+  eventId     Int
+  event       Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
 }
 
 model Task {

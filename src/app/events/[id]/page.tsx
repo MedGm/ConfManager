@@ -24,7 +24,7 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
 
     if (!event) return notFound();
 
-    const isOrganizer = session?.user?.email === event.organizer.email;
+    const isOrganizer = session?.user?.role === 'ORGANIZER' || session?.user?.email === event.organizer.email;
     const isRegistered = session && event.registrations.some((r: any) => r.userId === parseInt(session.user.id as string));
 
     return (
