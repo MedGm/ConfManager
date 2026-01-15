@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, X, User as UserIcon, Calendar, CheckCircle2 } from 'lucide-react';
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const TEAM_MEMBERS = [
     "Uthman Junaid",
@@ -35,9 +37,20 @@ export default function AgileBoardPage() {
         sprint: 'Sprint 3'
     });
 
+    const { data: session, status } = useSession();
+    const router = useRouter();
+
     useEffect(() => {
-        fetchTasks();
-    }, []);
+        if (status === "unauthenticated") {
+            router.push("/auth/signin");
+        } else if (status === "authenticated") {
+            if (session?.user?.role !== "ORGANIZER") {
+                router.push("/dashboard"); // Redirect non-admins
+            } else {
+                fetchTasks();
+            }
+        }
+    }, [status, session, router]);
 
     const fetchTasks = async () => {
         try {

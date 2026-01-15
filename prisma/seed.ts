@@ -18,18 +18,33 @@ async function main() {
         },
     })
 
-    const guest = await prisma.user.upsert({
-        where: { email: 'guest@conf.com' },
-        update: {},
-        create: {
-            email: 'guest@conf.com',
-            name: 'Guest User',
-            password,
-            role: 'PARTICIPANT',
-        },
-    })
+    // Create Team Members as ORGANIZERS
+    const teamMembers = [
+        { name: "Uthman Junaid", email: "uthman@conf.com" },
+        { name: "Ahmane Yahya", email: "ahmane@conf.com" },
+        { name: "Essalhi Salma", email: "essalhi@conf.com" },
+        { name: "Kamouss Yassine", email: "kamouss@conf.com" },
+        { name: "El Gorrim Mohamed", email: "elgorrim@conf.com" },
+        { name: "Salhi Mohamed", email: "salhi@conf.com" },
+        { name: "Kchibal Ismail", email: "kchibal@conf.com" },
+        { name: "Mohand Omar Moussa", email: "mohand@conf.com" }
+    ];
 
-    console.log({ admin, guest })
+    console.log("Seeding Team Members...")
+    for (const member of teamMembers) {
+        await prisma.user.upsert({
+            where: { email: member.email },
+            update: {},
+            create: {
+                email: member.email,
+                name: member.name,
+                password, // same password for everyone for easy testing
+                role: 'ORGANIZER',
+            },
+        })
+    }
+
+    console.log({ admin })
 
     // Seed Agile Tasks
     const tasks = [
