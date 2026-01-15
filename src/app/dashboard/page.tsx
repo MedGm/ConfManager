@@ -68,55 +68,56 @@ export default async function Dashboard() {
                                 <p>Aucune conférence trouvée dans le système.</p>
                             </div>
                         ) : (
-                            <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                                <table className="w-full text-left text-sm text-slate-600">
-                                    <thead className="bg-slate-50 border-b border-slate-200 uppercase text-xs font-semibold text-slate-500">
-                                        <tr>
-                                            <th className="px-6 py-4">Conférence</th>
-                                            <th className="px-6 py-4">Date & Lieu</th>
-                                            <th className="px-6 py-4 text-center">Inscrits</th>
-                                            <th className="px-6 py-4 text-right">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-slate-100">
-                                        {events.map((event: any) => (
-                                            <tr key={event.id} className="hover:bg-slate-50/50 transition">
-                                                <td className="px-6 py-4">
-                                                    <div className="font-semibold text-slate-900">{event.title}</div>
-                                                    <div className="text-xs text-slate-500 mt-1 line-clamp-1">{event.description}</div>
-                                                </td>
-                                                <td className="px-6 py-4">
-                                                    <div className="flex items-center gap-2">
-                                                        <Calendar className="w-4 h-4 text-indigo-500" />
-                                                        <span>{new Date(event.startDate).toLocaleDateString()}</span>
-                                                    </div>
-                                                    <div className="flex items-center gap-2 mt-1">
-                                                        <MapPin className="w-4 h-4 text-slate-400" />
-                                                        <span>{event.location || "En ligne"}</span>
-                                                    </div>
-                                                </td>
-                                                <td className="px-6 py-4 text-center">
-                                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                                        {event._count.registrations}
-                                                    </span>
-                                                </td>
-                                                <td className="px-6 py-4 text-right space-x-2">
-                                                    {!isOrganizer && (
-                                                        <div className="inline-block">
-                                                            <RegisterButton
-                                                                eventId={event.id}
-                                                                isRegistered={registeredEventIds.has(event.id)}
-                                                            />
-                                                        </div>
-                                                    )}
-                                                    <Link href={`/events/${event.id}`} className="inline-flex items-center px-3 py-1.5 border border-slate-200 text-slate-700 text-xs font-medium rounded-lg hover:bg-slate-50 transition">
-                                                        Détails
-                                                    </Link>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {events.map((event: any) => (
+                                    <div key={event.id} className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200 relative overflow-hidden">
+                                        {/* Decorative Gradient Background */}
+                                        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+
+                                        <div className="mb-4">
+                                            <div className="flex justify-between items-start mb-2">
+                                                <span className="bg-indigo-50 text-indigo-700 text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wide">
+                                                    Conférence
+                                                </span>
+                                                <span className="flex items-center text-xs text-slate-500 gap-1 bg-slate-100 px-2 py-1 rounded-full">
+                                                    <Users className="w-3 h-3" /> {event._count.registrations} inscrits
+                                                </span>
+                                            </div>
+                                            <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                                                {event.title}
+                                            </h3>
+                                            <p className="text-sm text-slate-500 line-clamp-2 mt-2 leading-relaxed">
+                                                {event.description}
+                                            </p>
+                                        </div>
+
+                                        <div className="space-y-2 mb-6">
+                                            <div className="flex items-center text-sm text-slate-600 gap-2">
+                                                <Calendar className="w-4 h-4 text-indigo-500" />
+                                                <span>{new Date(event.startDate).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                            </div>
+                                            <div className="flex items-center text-sm text-slate-600 gap-2">
+                                                <MapPin className="w-4 h-4 text-pink-500" />
+                                                <span>{event.location || "En ligne"}</span>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center justify-between pt-4 border-t border-slate-50">
+                                            {!isOrganizer ? (
+                                                <RegisterButton
+                                                    eventId={event.id}
+                                                    isRegistered={registeredEventIds.has(event.id)}
+                                                />
+                                            ) : (
+                                                <span className="text-xs font-medium text-slate-400 italic">Vue Organisateur</span>
+                                            )}
+
+                                            <Link href={`/events/${event.id}`} className="flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition">
+                                                Voir Détails →
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         )}
                     </div>
