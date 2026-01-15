@@ -50,9 +50,11 @@ export default function Navbar() {
                         <Link href="/dashboard" className={`px-3 py-1.5 rounded-md text-sm font-medium transition ${pathname === '/dashboard' ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}>
                             Console
                         </Link>
-                        <Link href="/events/my" className={`px-3 py-1.5 rounded-md text-sm font-medium transition ${pathname === '/events/my' ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}>
-                            Mes Inscriptions
-                        </Link>
+                        {session?.user?.role !== 'ORGANIZER' && (
+                            <Link href="/events/my" className={`px-3 py-1.5 rounded-md text-sm font-medium transition ${pathname === '/events/my' ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}>
+                                Mes Inscriptions
+                            </Link>
+                        )}
                         {session?.user?.role === 'ORGANIZER' && (
                             <Link href="/admin/agile-board" className={`px-3 py-1.5 rounded-md text-sm font-medium transition ${pathname === '/admin/agile-board' ? 'bg-indigo-600 text-white' : 'text-slate-300 hover:text-white hover:bg-slate-800'}`}>
                                 Suivi Projet (Agile)

@@ -123,36 +123,28 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
                     {/* Sidebar */}
                     <div className="space-y-8">
                         {/* Registration Card */}
-                        <div className="bg-white p-8 rounded-2xl shadow-lg border border-indigo-50 sticky top-24">
-                            <h3 className="text-xl font-bold text-slate-900 mb-2">Inscription</h3>
-                            <p className="text-slate-500 text-sm mb-6">Réservez votre place dès maintenant pour participer.</p>
+                        {/* Registration Card - Only for Non-Organizers */}
+                        {!isOrganizer && (
+                            <div className="bg-white p-8 rounded-2xl shadow-lg border border-indigo-50 sticky top-24">
+                                <h3 className="text-xl font-bold text-slate-900 mb-2">Inscription</h3>
+                                <p className="text-slate-500 text-sm mb-6">Réservez votre place dès maintenant pour participer.</p>
 
-                            <div className="mb-6 flex items-center justify-between text-sm">
-                                <span className="text-slate-600">Participant(s)</span>
-                                <span className="font-bold text-slate-900">{event.registrations.length} Inscrits</span>
-                            </div>
+                                <div className="mb-6 flex items-center justify-between text-sm">
+                                    <span className="text-slate-600">Participant(s)</span>
+                                    <span className="font-bold text-slate-900">{event.registrations.length} Inscrits</span>
+                                </div>
 
-                            {session ? (
-                                !isOrganizer && (
+                                {session ? (
                                     <div className="w-full">
-                                        {/* Pass full width styling to button via class manipulation if needed, 
-                                            or rely on the component's internal styling. 
-                                            RegisterButton is client-side. */}
                                         <RegisterButton eventId={event.id} isRegistered={!!isRegistered} />
                                     </div>
-                                )
-                            ) : (
-                                <Link href="/auth/signin" className="block w-full py-3 bg-indigo-600 text-white text-center font-bold rounded-xl hover:bg-indigo-700 transition">
-                                    Se connecter pour s'inscrire
-                                </Link>
-                            )}
-
-                            {isOrganizer && (
-                                <div className="p-3 bg-indigo-50 text-indigo-700 text-sm font-medium rounded-lg text-center">
-                                    Vous organisez cet événement
-                                </div>
-                            )}
-                        </div>
+                                ) : (
+                                    <Link href="/auth/signin" className="block w-full py-3 bg-indigo-600 text-white text-center font-bold rounded-xl hover:bg-indigo-700 transition">
+                                        Se connecter pour s'inscrire
+                                    </Link>
+                                )}
+                            </div>
+                        )}
 
                         {/* Organizer Info */}
                         <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
