@@ -1,0 +1,347 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{amsmath}
+
+% Configuration de la mise en page
+\geometry{hmargin=2.5cm,vmargin=2.5cm}
+
+% Couleurs
+\definecolor{primary}{RGB}{79, 70, 229} % Indigo
+\definecolor{secondary}{RGB}{15, 23, 42} % Slate 900
+
+% Configuration des liens
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Rapport Final - Projet Gestion Conférence},
+}
+
+% Configuration des En-têtes et Pieds de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\textbf{ConfManager}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Style des chapitres
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{secondary}}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+\begin{document}
+
+%---------------------------------
+% Page de garde
+%---------------------------------
+\begin{titlepage}
+    \centering
+
+    % --- Logos ---
+    \makebox[\textwidth][s]{%
+        \includegraphics[height=2.5cm, keepaspectratio]{images/logo_right.png}\hfill
+        \includegraphics[height=2.6cm, keepaspectratio]{images/logo_left.png}
+    }
+
+    \vspace{2cm}
+
+    {\large \textbf{Université Abdelmalek Essaâdi}}\\
+    {\large \textbf{Faculté des Sciences et Techniques de Tanger}}\\
+    {\large \textbf{Département Génie Informatique}}\\
+
+    \vspace{2cm}
+
+    \rule{\linewidth}{0.6mm}\\[0.3cm]
+    {\huge\textbf{RAPPORT DE PROJET}}\\[0.2cm]
+    {\Large\textbf{Plateforme de Gestion d'Événements (ConfManager)}}\\[0.3cm]
+    \rule{\linewidth}{0.5mm}
+
+    \vspace{0.8cm}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.4\linewidth, keepaspectratio]{images/logo.png}
+    \end{figure}
+
+    \vspace{2cm}
+    
+    \noindent
+    \begin{minipage}[t]{0.48\textwidth}
+        \raggedright
+        {\large \textbf{Réalisé par (Équipe 7) :}}\\[0.3cm]
+        \normalsize
+        \textbf{Uthman Junaid} (Chef de Projet)\\
+        Ahmane Yahya (Analyste)\\
+        Essalhi Salma (Analyste)\\
+        Kamouss Yassine (Dev Back)\\
+        El Gorrim Mohamed (Dev Back)\\
+        Salhi Mohamed (Dev Front)\\
+        Kchibal Ismail (Testeur)\\
+        Mohand Omar Moussa (Qualité)
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \raggedleft
+        {\large \textbf{Encadré par :}}\\[0.3cm]
+        \normalsize
+        M. Boudhir Anouar Abdelhakim
+    \end{minipage}
+
+    \vspace{1cm}
+
+    {\large Cycle Ingénieur – Logiciels et Systèmes Intelligents}\\[0.2cm]
+    {\large Année Universitaire 2025–2026}\\
+
+\end{titlepage}
+
+\tableofcontents
+\listoffigures
+\newpage
+
+% CHAPITRE 1 : INTRODUCTION
+\chapter{Introduction Générale}
+
+\section{Contexte du Projet}
+Dans le milieu académique et professionnel, l'organisation de conférences nécessite une gestion rigoureuse des plannings, des inscriptions et de la communication. Notre projet \textbf{ConfManager} vise à développer une solution web centralisée, inspirée de plateformes comme EasyChair, pour simplifier ce processus.
+
+\section{Objectifs}
+L'objectif est de fournir une application permettant :
+\begin{itemize}
+    \item La création de comptes (Organisateurs / Participants).
+    \item La gestion complète des événements (CRUD).
+    \item Un système d'inscription fluide.
+    \item La génération de plannings de conférences.
+\end{itemize}
+
+\newpage
+
+% CHAPITRE 2 : GESTION DE PROJET
+\chapter{Pilotage et Gestion de Projet}
+
+Ce chapitre détaille l'organisation, la planification financière et temporelle, ainsi que l'analyse des risques du projet.
+
+\section{Organisation de l'Équipe (OBS)}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|p{3.5cm}|p{6cm}|p{5cm}|}
+\hline
+\textbf{Rôle} & \textbf{Membres} & \textbf{Responsabilités clés} \\ \hline
+Chef de Projet &
+UTHMAN JUNAID &
+Pilotage du projet, planification, gestion des risques \\ \hline
+
+Analystes &
+AHMANE YAHYA \newline ESSALHI SALMA &
+Analyse des besoins, WBS, cas d’utilisation \\ \hline
+
+Développeurs Back-End &
+KAMOUSS YASSINE \newline EL GORRIM MOHAMED &
+API, base de données, logique métier \\ \hline
+
+Développeur Front-End &
+SALHI MOHAMED &
+UI/UX, intégration front-end \\ \hline
+
+Testeur &
+KCHIBAL ISMAIL &
+Tests unitaires et d’intégration \\ \hline
+
+Qualité / Documentation &
+MOHAND OMAR MOUSSA &
+Revue de code, documentation \\ \hline
+\end{tabular}
+\caption{Organisation de l’équipe projet (OBS)}
+\end{table}
+
+\section{Structure de Découpage (WBS)}
+Le projet a été découpé hiérarchiquement pour assurer une couverture complète des tâches.
+
+\subsection*{1. Project Management}
+\begin{itemize}
+    \item \textbf{1.1 Initialization}: Scope, Team Setup, Tools Setup.
+    \item \textbf{1.2 Planning}: WBS, Gantt, Budget, Risk Analysis.
+    \item \textbf{1.3 Monitoring}: Weekly Reviews, Sprint Planning.
+\end{itemize}
+
+\subsection*{Outil de Gestion Agile (Interne)}
+Conformément aux exigences, nous avons développé un module interne de gestion de projet (Agile Dashboard) directement intégré à la plateforme Back-Office. Cet outil permet de visualiser l'avancement des tâches par Sprint (Kanban View).
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \includegraphics[width=\textwidth, keepaspectratio]{images/agile_board_screenshot.png}
+    }
+    \caption{Tableau de bord Agile intégré (Sprints \& Backlog)}
+    \label{fig:agile_board}
+\end{figure}
+
+
+\subsection*{2. Analysis \& Design}
+\begin{itemize}
+    \item \textbf{2.1 Requirements}: User Stories (Functional/Non-Functional).
+    \item \textbf{2.2 Modeling}: Use Case Diagrams, Class Diagrams.
+    \item \textbf{2.3 UI/UX}: Wireframes (Figma), Prototype.
+\end{itemize}
+
+\subsection*{3. Development}
+\begin{itemize}
+    \item \textbf{3.1 Setup}: Next.js, Prisma.
+    \item \textbf{3.2 Backend}: Auth (NextAuth), APIs (User, Event, Registration).
+    \item \textbf{3.3 Frontend}: Landing Page, Dashboard, Event Details.
+\end{itemize}
+
+\subsection*{4. Testing \& Quality}
+\begin{itemize}
+    \item Unit Testing \& Integration Testing.
+    \item User Acceptance Testing (UAT).
+\end{itemize}
+
+\subsection*{5. Closure}
+\begin{itemize}
+    \item Documentation (Dossier Technique).
+    \item Présentation Finale.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth, keepaspectratio]{images/wbs_diagram.png}
+    \caption{Diagramme WBS}
+\end{figure}
+
+\section{Planification (Gantt)}
+Le projet s'étale du 12 Décembre au 22 Janvier.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, keepaspectratio]{images/gantt_chart.png}
+    \caption{Planning Gantt du Projet}
+\end{figure}
+
+\section{Budget et Estimation des Charges}
+Nous avons utilisé la méthode \textbf{COCOMO Simplifié}.
+
+\subsection{Estimation}
+\begin{itemize}
+    \item \textbf{Taille estimée} : 2,000 lignes de code (2 KLOC).
+    \item \textbf{Formule} : $Effort = 2.4 \times (KLOC)^{1.05} \approx 5$ mois-homme (Théorique).
+    \item \textbf{Contexte Étudiant} : Ajusté à ~32 jours-homme effectifs (8 personnes x 4 semaines partiel).
+\end{itemize}
+
+\subsection{Budget Théorique}
+% Basé sur un TJM fictif de 300€ :
+$$ 32 \text{ jours} \times 300\text{€} = 9,600\text{€} $$
+
+\section{Analyse des Risques}
+Matrice Probabilité $\times$ Impact pour prioriser les risques.
+
+\begin{longtable}{|c|p{5cm}|c|c|c|p{4cm}|}
+\hline
+\textbf{ID} & \textbf{Risque} & \textbf{Prob.} & \textbf{Imp.} & \textbf{PxI} & \textbf{Mitigation} \\ \hline
+R1 & Retard dév (Tech stack) & 4 & 5 & \textbf{20} & Formation, Pair prog. \\ \hline
+R2 & Indisponibilité membre & 3 & 4 & 12 & Binômage. \\ \hline
+R3 & Mauvaise estimation & 4 & 3 & 12 & Agile, Revues hebdo. \\ \hline
+R4 & Problèmes Git & 5 & 3 & 15 & Pull Requests strictes. \\ \hline
+R5 & Effet Démo & 3 & 5 & 15 & Vidéo de secours. \\ \hline
+\end{longtable}
+
+\newpage
+
+% CHAPITRE 3 : ANALYSE ET CONCEPTION
+\chapter{Analyse et Conception}
+
+\section{Analyse Fonctionnelle (Use Cases)}
+Le système interagit avec 3 acteurs : Visiteur, Participant, Organisateur.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth, keepaspectratio]{images/usecase_diagram.png}
+    \caption{Diagramme des Cas d'Utilisation}
+\end{figure}
+
+\textbf{Scénarios Clés :}
+\begin{itemize}
+    \item \textbf{S'inscrire / Se connecter} : Pré-requis pour les rôles avancés.
+    \item \textbf{Gérer événement} : Création, modification par l'organisateur.
+    \item \textbf{S'inscrire à un événement} : Action principale du participant.
+\end{itemize}
+
+\section{Modélisation des Données (Classes)}
+Le diagramme de classes reflète le schéma de base de données Prisma.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth, keepaspectratio]{images/class_diagram.png}
+    \caption{Diagramme de Classes}
+\end{figure}
+
+\textbf{Entités Principales :}
+\begin{itemize}
+    \item \texttt{User} : Stocke les infos d'authentification et le rôle.
+    \item \texttt{Event} : L'entité centrale (dates, lieu, organisateur).
+    \item \texttt{Session} : Sous-élément d'un événement (planning détaillé).
+    \item \texttt{Registration} : Lien entre User et Event (Statut inscription).
+\end{itemize}
+
+\newpage
+
+% CHAPITRE 4 : RÉALISATION
+\chapter{Réalisation Technique}
+
+\section{Architecture}
+\begin{itemize}
+    \item \textbf{Stack} : Next.js 14, TypeScript, Tailwind CSS, Prisma, SQLite (Dev).
+    \item \textbf{Tests} : Jest \& React Testing Library (Unitaires \& Intégration).
+\end{itemize}
+
+\section{Interfaces Utilisateur}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/screenshot_login.png}
+      \caption{Page de Connexion}
+    \end{subfigure}
+    \begin{subfigure}{.49\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{images/screenshot_dashboard.png}
+      \caption{Tableau de Bord}
+    \end{subfigure}
+    \caption{Aperçu de l'interface}
+\end{figure}
+
+\section{Tests et Validation}
+Une suite de tests automatisés a été implémentée pour garantir la robustesse.
+\begin{lstlisting}[language=bash, frame=single, caption={Exécution des tests avec Jest}]
+PASS  src/components/events/RegisterButton.test.tsx
+PASS  src/lib/utils.test.ts           
+PASS  src/app/api/events/route.test.ts
+Test Suites: 3 passed, 3 total
+\end{lstlisting}
+
+\newpage
+
+% CONCLUSION
+\chapter{Conclusion}
+Le projet \textbf{ConfManager} a permis de mettre en œuvre une solution complète de gestion d'événements, respectant les standards du génie logiciel (WBS, UML, Tests). L'équipe a su surmonter les défis techniques (Next.js) et organisationnels pour livrer un produit fonctionnel dans les délais.
+
+\end{document}

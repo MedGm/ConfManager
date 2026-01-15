@@ -2,13 +2,14 @@
 
 ## Project Team: Event Management Platform
 
-| Role | Responsibilities | Assigned To |
-|------|------------------|-------------|
-| **Chef de Projet (Project Manager)** | Coordination, planning, risk management, sprint organization (Scrum Master). | **UTHMAN JUNAID** |
-| **Analyste** | Requirements analysis, specifications, Use Case diagrams, WBS. | **AHMANE YAHYA**, **ESSALHI SALMA** |
-| **Développeur (Full Stack)** | Algorithm implementation, Frontend (Next.js), Backend (API), Database integration. | **KAMOUSS YASSINE**, **EL GORRIM MOHAMED**, **SALHI MOHAMED** |
-| **Testeur** | Test planning, execution (unit/integration), bug reporting. | **KCHIBAL ISMAIL** |
-| **Responsable Qualité** | Code review, standard compliance, deliverable validation. | **MOHAND OMAR MOUSSA** |
+| Rôle | Responsabilités | Membres Assignés |
+|------|------------------|------------------|
+| **Chef de Projet** | Coordination, gestion des risques, Scrum Master, Planning. | **UTHMAN JUNAID** |
+| **Analystes** | Cahier des charges, WBS, Cas d'utilisation, Maquettes. | **AHMANE YAHYA**, **ESSALHI SALMA** |
+| **Développeurs Back** | API, Base de données, Auth, Logique métier. | **KAMOUSS YASSINE**, **EL GORRIM MOHAMED** |
+| **Développeurs Front** | Interface UI/UX, React/Next.js, Intégration. | **SALHI MOHAMED** |
+| **Testeur** | Plans de tests, Tests unitaires/intégration, Rapport de bugs. | **KCHIBAL ISMAIL** |
+| **Qualité / Doc** | Revue de code, Validation livrables, Documentation technique. | **MOHAND OMAR MOUSSA** |
 
 ## Structure & Hierarchy
 - **Steering Committee**: Teacher / Supervisor.

@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String   @unique
+  password  String
+  role      String   @default("PARTICIPANT") // ORGANIZER, PARTICIPANT
+  createdAt DateTime @default(now())
+  
+  events        Event[]        @relation("OrganizedEvents")
+  registrations Registration[]
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  startDate   DateTime
+  endDate     DateTime
+  location    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  organizerId Int
+  organizer   User     @relation("OrganizedEvents", fields: [organizerId], references: [id])
+  
+  registrations Registration[]
+  sessions      Session[]
+}
+
+model Registration {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  eventId   Int
+  status    String   @default("CONFIRMED")
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+  event     Event    @relation(fields: [eventId], references: [id])
+  
+  @@unique([userId, eventId])
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  title     String
+  speaker   String?
+  startTime DateTime
+  endTime   DateTime
+  eventId   Int
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+}
+
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  status      String   @default("TODO") // TODO, IN_PROGRESS, DONE
+  priority    String   @default("MEDIUM") // LOW, MEDIUM, HIGH
+  sprint      String?  @default("Backlog")
+  
+  assignee    String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
