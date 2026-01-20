@@ -2,5 +2,5 @@ projectKey=ConfManager
 serverUrl=http://localhost:9000
 serverVersion=26.1.0.118079
 dashboardUrl=http://localhost:9000/dashboard?id=ConfManager
-ceTaskId=46722d85-daf4-4395-b53d-31548311a8c8
-ceTaskUrl=http://localhost:9000/api/ce/task?id=46722d85-daf4-4395-b53d-31548311a8c8
+ceTaskId=7a37b11d-da2f-45a9-8a23-69bbec96e5d3
+ceTaskUrl=http://localhost:9000/api/ce/task?id=7a37b11d-da2f-45a9-8a23-69bbec96e5d3
