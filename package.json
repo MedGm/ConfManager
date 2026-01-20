@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "jest",
-    "sonar": "sonarqube-scanner"
+    "sonar": "sonar-scanner"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

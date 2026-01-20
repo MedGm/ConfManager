@@ -109,7 +109,7 @@ Le projet intègre une configuration pour [SonarQube](https://www.sonarqube.org/
 3.  Créer un projet nommé "ConfManager" et générer un token.
 4.  Lancer le scan :
     ```bash
-    npm run sonar -- -Dsonar.login=<votre-token>
+    npm run sonar -- -Dsonar.token=<votre-token>
     ```
 
 ---
