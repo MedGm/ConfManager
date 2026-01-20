@@ -338,6 +338,26 @@ PASS  src/app/api/events/route.test.ts
 Test Suites: 3 passed, 3 total
 \end{lstlisting}
 
+\section{Qualité de Code et Analyse Statique}
+Pour assurer la maintenabilité et la sécurité du code, une intégration continue avec \textbf{SonarQube} a été mise en place. 
+
+\subsection{Infrastructure}
+L'environnement d'analyse repose sur une architecture conteneurisée via \textbf{Docker}, comprenant :
+\begin{itemize}
+    \item Un serveur SonarQube (v10.x).
+    \item Une base de données PostgreSQL dédiée.
+\end{itemize}
+
+\subsection{Résultats de l'Analyse}
+Le projet a été scanné à l'aide de \texttt{sonarqube-scanner}. L'analyse "Clean Code" a permis de détecter et corriger les "Code Smells" (variables inutilisées, complexité, duplication) et les vulnérabilités de sécurité.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth, keepaspectratio]{images/sonarqube_analysis.png}
+    \caption{Rapport d'analyse SonarQube (Succès)}
+    \label{fig:sonarqube}
+\end{figure}
+
 \newpage
 
 % CONCLUSION
