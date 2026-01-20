@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 export async function POST(req: Request) {
     try {
         const session = await getServerSession(authOptions);
-        if (!session || session.user.role !== "ORGANIZER") {
+        if (!session || session?.user?.role !== "ORGANIZER") {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
                 speaker,
                 startTime: new Date(startTime),
                 endTime: new Date(endTime),
-                eventId: parseInt(eventId),
+                eventId: Number.parseInt(eventId),
             }
         });
 

@@ -71,10 +71,11 @@ export default function CreateSessionForm({ eventId }: { eventId: number }) {
 
             <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Titre de la session</label>
+                    <label htmlFor="title" className="block text-sm font-medium text-slate-700 mb-1">Titre de la session</label>
                     <div className="relative">
                         <Type className="absolute left-3 top-2.5 w-5 h-5 text-slate-400" />
                         <input
+                            id="title"
                             name="title"
                             required
                             className="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 transition"
@@ -84,10 +85,11 @@ export default function CreateSessionForm({ eventId }: { eventId: number }) {
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Speaker / Intervenant</label>
+                    <label htmlFor="speaker" className="block text-sm font-medium text-slate-700 mb-1">Speaker / Intervenant</label>
                     <div className="relative">
                         <User className="absolute left-3 top-2.5 w-5 h-5 text-slate-400" />
                         <input
+                            id="speaker"
                             name="speaker"
                             required
                             className="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 transition"
@@ -98,12 +100,12 @@ export default function CreateSessionForm({ eventId }: { eventId: number }) {
 
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Début</label>
-                        <input name="startTime" type="datetime-local" required className="w-full p-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 transition" />
+                        <label htmlFor="startTime" className="block text-sm font-medium text-slate-700 mb-1">Début</label>
+                        <input id="startTime" name="startTime" type="datetime-local" required className="w-full p-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 transition" />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Fin</label>
-                        <input name="endTime" type="datetime-local" required className="w-full p-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 transition" />
+                        <label htmlFor="endTime" className="block text-sm font-medium text-slate-700 mb-1">Fin</label>
+                        <input id="endTime" name="endTime" type="datetime-local" required className="w-full p-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 transition" />
                     </div>
                 </div>
 

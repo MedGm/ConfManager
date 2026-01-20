@@ -13,7 +13,7 @@ export default async function MyRegistrationsPage() {
     }
 
     const registrations = await prisma.registration.findMany({
-        where: { userId: parseInt(session.user.id as string) },
+        where: { userId: Number.parseInt(session.user.id as string) },
         include: {
             event: true
         }

@@ -87,10 +87,11 @@ export default function Register() {
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         <div>
-                            <label className="block text-sm font-semibold text-slate-700 mb-2">Nom Complet</label>
+                            <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">Nom Complet</label>
                             <div className="relative">
                                 <User className="absolute left-4 top-3.5 w-5 h-5 text-slate-400" />
                                 <input
+                                    id="name"
                                     name="name"
                                     type="text"
                                     required
@@ -101,10 +102,11 @@ export default function Register() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-semibold text-slate-700 mb-2">Email Professionnel</label>
+                            <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">Email Professionnel</label>
                             <div className="relative">
                                 <Mail className="absolute left-4 top-3.5 w-5 h-5 text-slate-400" />
                                 <input
+                                    id="email"
                                     name="email"
                                     type="email"
                                     required
@@ -115,10 +117,11 @@ export default function Register() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-semibold text-slate-700 mb-2">Mot de passe</label>
+                            <label htmlFor="password" className="block text-sm font-semibold text-slate-700 mb-2">Mot de passe</label>
                             <div className="relative">
                                 <Lock className="absolute left-4 top-3.5 w-5 h-5 text-slate-400" />
                                 <input
+                                    id="password"
                                     name="password"
                                     type="password"
                                     required

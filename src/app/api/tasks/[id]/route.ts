@@ -9,7 +9,7 @@ export async function PATCH(
 ) {
     try {
         const session = await getServerSession(authOptions);
-        if (!session || session.user.role !== "ORGANIZER") {
+        if (!session || session?.user?.role !== "ORGANIZER") {
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
@@ -19,7 +19,7 @@ export async function PATCH(
 
         const task = await prisma.task.update({
             where: {
-                id: parseInt(id)
+                id: Number.parseInt(id)
             },
             data: {
                 title,
@@ -44,7 +44,7 @@ export async function DELETE(
 ) {
     try {
         const session = await getServerSession(authOptions);
-        if (!session || session.user.role !== "ORGANIZER") {
+        if (!session || session?.user?.role !== "ORGANIZER") {
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
@@ -52,7 +52,7 @@ export async function DELETE(
 
         const task = await prisma.task.delete({
             where: {
-                id: parseInt(id)
+                id: Number.parseInt(id)
             }
         });
 

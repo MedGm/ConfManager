@@ -8,7 +8,6 @@ import { signOut, useSession } from "next-auth/react";
 export default function Navbar() {
     const pathname = usePathname();
     const { data: session } = useSession();
-    const isPublic = !pathname.startsWith("/dashboard") && !pathname.startsWith("/events");
 
     // If we are on public pages and not logged in, or purely public home, show public nav
     // But if user is logged in and goes to home, we might want to show dashboard link

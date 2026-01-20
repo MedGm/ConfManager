@@ -6,7 +6,7 @@ import { authOptions } from "@/lib/auth";
 export async function GET() {
     try {
         const session = await getServerSession(authOptions);
-        if (!session || session.user.role !== "ORGANIZER") {
+        if (!session || session?.user?.role !== "ORGANIZER") {
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
@@ -26,7 +26,7 @@ export async function GET() {
 export async function POST(req: Request) {
     try {
         const session = await getServerSession(authOptions);
-        if (!session || session.user.role !== "ORGANIZER") {
+        if (!session || session?.user?.role !== "ORGANIZER") {
             return new NextResponse("Unauthorized", { status: 401 });
         }
 

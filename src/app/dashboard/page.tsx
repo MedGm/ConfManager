@@ -26,7 +26,7 @@ export default async function Dashboard() {
     });
 
     const userRegistrations = await prisma.registration.findMany({
-        where: { userId: parseInt(session.user.id as string) },
+        where: { userId: Number.parseInt(session.user.id as string) },
         select: { eventId: true }
     });
 

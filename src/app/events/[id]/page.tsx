@@ -12,7 +12,7 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
     const resolvedParams = await params;
     const session = await getServerSession(authOptions);
     const event = await prisma.event.findUnique({
-        where: { id: parseInt(resolvedParams.id) },
+        where: { id: Number.parseInt(resolvedParams.id) },
         include: {
             organizer: true,
             sessions: {
@@ -25,7 +25,7 @@ export default async function EventPage({ params }: { params: Promise<{ id: stri
     if (!event) return notFound();
 
     const isOrganizer = session?.user?.role === 'ORGANIZER' || session?.user?.email === event.organizer.email;
-    const isRegistered = session && event.registrations.some((r: any) => r.userId === parseInt(session.user.id as string));
+    const isRegistered = session && event.registrations.some((r: any) => r.userId === Number.parseInt(session.user.id as string));
 
     return (
         <div className="min-h-screen bg-slate-50">

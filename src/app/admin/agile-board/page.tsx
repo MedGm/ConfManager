@@ -243,8 +243,9 @@ export default function AgileBoardPage() {
 
                                 <form onSubmit={handleCreateTask} className="space-y-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-700 mb-1">Title</label>
+                                        <label htmlFor="title" className="block text-sm font-medium text-slate-700 mb-1">Title</label>
                                         <input
+                                            id="title"
                                             type="text"
                                             required
                                             className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
@@ -255,8 +256,9 @@ export default function AgileBoardPage() {
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
+                                        <label htmlFor="description" className="block text-sm font-medium text-slate-700 mb-1">Description</label>
                                         <textarea
+                                            id="description"
                                             className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition h-24 resize-none"
                                             value={newTask.description}
                                             onChange={e => setNewTask({ ...newTask, description: e.target.value })}
@@ -266,8 +268,9 @@ export default function AgileBoardPage() {
 
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-1">Priority</label>
+                                            <label htmlFor="priority" className="block text-sm font-medium text-slate-700 mb-1">Priority</label>
                                             <select
+                                                id="priority"
                                                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
                                                 value={newTask.priority}
                                                 onChange={e => setNewTask({ ...newTask, priority: e.target.value })}
@@ -278,8 +281,9 @@ export default function AgileBoardPage() {
                                             </select>
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-1">Sprint</label>
+                                            <label htmlFor="sprint" className="block text-sm font-medium text-slate-700 mb-1">Sprint</label>
                                             <select
+                                                id="sprint"
                                                 className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
                                                 value={newTask.sprint}
                                                 onChange={e => setNewTask({ ...newTask, sprint: e.target.value })}
@@ -293,8 +297,9 @@ export default function AgileBoardPage() {
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-700 mb-1">Assignee</label>
+                                        <label htmlFor="assignee" className="block text-sm font-medium text-slate-700 mb-1">Assignee</label>
                                         <select
+                                            id="assignee"
                                             className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
                                             value={newTask.assignee}
                                             onChange={e => setNewTask({ ...newTask, assignee: e.target.value })}

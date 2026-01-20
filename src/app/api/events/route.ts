@@ -8,7 +8,7 @@ export async function POST(req: Request) {
         const session = await getServerSession(authOptions);
 
         // Check authentication and role
-        if (!session || session.user.role !== "ORGANIZER") {
+        if (!session || session?.user?.role !== "ORGANIZER") {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
                 startDate: new Date(startDate),
                 endDate: new Date(endDate),
                 location,
-                organizerId: parseInt(session.user.id as string),
+                organizerId: Number.parseInt(session.user.id as string),
             },
         });
 

@@ -21,8 +21,8 @@ export async function POST(req: Request) {
         const existing = await prisma.registration.findUnique({
             where: {
                 userId_eventId: {
-                    userId: parseInt(session.user.id as string),
-                    eventId: parseInt(eventId),
+                    userId: Number.parseInt(session.user.id as string),
+                    eventId: Number.parseInt(eventId),
                 }
             }
         });
@@ -33,8 +33,8 @@ export async function POST(req: Request) {
 
         const registration = await prisma.registration.create({
             data: {
-                userId: parseInt(session.user.id as string),
-                eventId: parseInt(eventId),
+                userId: Number.parseInt(session.user.id as string),
+                eventId: Number.parseInt(eventId),
                 status: "CONFIRMED"
             }
         });

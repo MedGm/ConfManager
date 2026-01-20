@@ -91,10 +91,11 @@ export default function CreateEventForm() {
                                 {/* Inputs */}
                                 <div className="space-y-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-700 mb-1">Titre <span className="text-red-500">*</span></label>
+                                        <label htmlFor="title" className="block text-sm font-medium text-slate-700 mb-1">Titre <span className="text-red-500">*</span></label>
                                         <div className="relative">
                                             <Type className="absolute left-3 top-2.5 w-5 h-5 text-slate-400" />
                                             <input
+                                                id="title"
                                                 name="title"
                                                 required
                                                 className="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition"
@@ -104,8 +105,9 @@ export default function CreateEventForm() {
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
+                                        <label htmlFor="description" className="block text-sm font-medium text-slate-700 mb-1">Description</label>
                                         <textarea
+                                            id="description"
                                             name="description"
                                             className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition h-24 resize-none"
                                             placeholder="Thèmes, objectifs..."
@@ -114,20 +116,21 @@ export default function CreateEventForm() {
 
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-1">Début <span className="text-red-500">*</span></label>
-                                            <input name="startDate" type="datetime-local" required className="w-full p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" />
+                                            <label htmlFor="startDate" className="block text-sm font-medium text-slate-700 mb-1">Début <span className="text-red-500">*</span></label>
+                                            <input id="startDate" name="startDate" type="datetime-local" required className="w-full p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium text-slate-700 mb-1">Fin <span className="text-red-500">*</span></label>
-                                            <input name="endDate" type="datetime-local" required className="w-full p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" />
+                                            <label htmlFor="endDate" className="block text-sm font-medium text-slate-700 mb-1">Fin <span className="text-red-500">*</span></label>
+                                            <input id="endDate" name="endDate" type="datetime-local" required className="w-full p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none" />
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-700 mb-1">Lieu</label>
+                                        <label htmlFor="location" className="block text-sm font-medium text-slate-700 mb-1">Lieu</label>
                                         <div className="relative">
                                             <MapPin className="absolute left-3 top-2.5 w-5 h-5 text-slate-400" />
                                             <input
+                                                id="location"
                                                 name="location"
                                                 className="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-indigo-500 outline-none transition"
                                                 placeholder="ex: Salle B, Zoom..."
