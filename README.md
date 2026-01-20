@@ -92,6 +92,27 @@ npm test
 ```
 
 ---
+    
+## 🔍 Qualité du Code (SonarQube)
+
+Le projet intègre une configuration pour [SonarQube](https://www.sonarqube.org/) afin d'analyser la qualité du code.
+
+### Pré-requis
+*   Docker installé.
+
+### Lancer l'analyse localement
+1.  Démarrer le serveur SonarQube :
+    ```bash
+    docker-compose -f docker-compose.sonar.yml up -d
+    ```
+2.  Accéder à [http://localhost:9000](http://localhost:9000) (Login: `admin` / Password: `admin`).
+3.  Créer un projet nommé "ConfManager" et générer un token.
+4.  Lancer le scan :
+    ```bash
+    npm run sonar -- -Dsonar.login=<votre-token>
+    ```
+
+---
 
 ## 📄 Documentation
 
